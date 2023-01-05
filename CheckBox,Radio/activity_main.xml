@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    tools:context=".MainActivity">
+
+    <CheckBox
+        android:id="@+id/check_100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="checkClick"
+        android:text="100"/>
+    <CheckBox
+        android:id="@+id/check_200"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="checkClick"
+        android:text="200"/>
+    <CheckBox
+        android:id="@+id/check_300"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="checkClick"
+        android:text="300"/>
+    <CheckBox
+        android:id="@+id/check_400"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="checkClick"
+        android:text="400"/>
+    <CheckBox
+        android:id="@+id/check_500"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="checkClick"
+        android:text="500"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="167dp"
+        android:id="@+id/rg">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DBMS" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DS" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Android" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="clear" />
+</LinearLayout>
