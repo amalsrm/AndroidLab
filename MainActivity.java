@@ -2,190 +2,82 @@ package com.amalsrm.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-    Float num1,num2,num3;
-    Boolean add=false,mul=false,div=false,sub=false,clear=false;
-
+    Double total;
+    String c1,s,s1;
+    TextView t1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText display=(EditText) findViewById(R.id.ed1);
-        Button bplus=(Button)findViewById(R.id.bplus);
-        Button bminus=(Button)findViewById(R.id.bminus);
-        Button bmul=(Button)findViewById(R.id.bmul);
-        Button bdiv=(Button)findViewById(R.id.bdiv);
-        Button bequal=(Button)findViewById(R.id.bequal);
-        Button bclear=(Button)findViewById(R.id.bclear);
+        total=0.0;
 
-        Button b1=(Button) findViewById(R.id.b1);
-        Button b2=(Button) findViewById(R.id.b2);
-        Button b3=(Button) findViewById(R.id.b3);
-        Button b4=(Button) findViewById(R.id.b4);
-        Button b5=(Button) findViewById(R.id.b5);
-        Button b6=(Button) findViewById(R.id.b6);
-        Button b7=(Button) findViewById(R.id.b7);
-        Button b8=(Button) findViewById(R.id.b8);
-        Button b9=(Button) findViewById(R.id.b9);
-        Button b0=(Button) findViewById(R.id.b0);
-        Button bdot=(Button)findViewById(R.id.bdot);
 
-        b1.setOnClickListener(new View.OnClickListener() {
+    }
+    // CheckBox onClick event handle
+    public void checkClick(View view){
+        CheckBox checkbox = (CheckBox)view;
+        boolean  ischeck = checkbox.isChecked();
+        switch(checkbox.getId()){
+            case R.id.check_100:
+                s=checkbox.getText().toString();
+                if(ischeck) total+=100;
+                else{ total-=100;
+                Toast.makeText(MainActivity.this,"ffhcvghvg"+total,Toast.LENGTH_SHORT).show();}
+                break;
+            case R.id.check_200:
+                s1=checkbox.getText().toString();
+                if(ischeck) total+=200;
+                else total-=200;
+                break;
+            case R.id.check_300:
+                if(ischeck) total+=300;
+                else total-=300;
+                break;
+            case R.id.check_400:
+                if(ischeck) total+=400;
+                else total-=400;
+                break;
+            case R.id.check_500:
+                if(ischeck) total+=500;
+                else total-=500;
+                break;
+            default:
+                break;
+        }
+        CheckBox c11=(CheckBox) findViewById(R.id.check_100);
+        c1="54";
+        Button bi=(Button)findViewById(R.id.button);
+        bi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                display.setText(display.getText()+"1");
-            }
-        });
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                display.setText(display.getText()+"2");
-            }
-        });
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                display.setText(display.getText()+"3");
-            }
-        });
-        b4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                display.setText(display.getText()+"4");
-            }
-        });
-        b5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                display.setText(display.getText()+"5");
-            }
-        });
-        b6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                display.setText(display.getText()+"6");
-            }
-        });
-        b7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                display.setText(display.getText()+"7");
-            }
-        });
-        b8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                display.setText(display.getText()+"8");
-            }
-        });
-        b9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                display.setText(display.getText()+"9");
-            }
-        });
-        b0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                display.setText(display.getText()+"0");
-            }
-        });
+                String str=s+s1;
+                Toast.makeText(MainActivity.this,"Total : "+str,Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(MainActivity.this,MainActivity2.class);
+                intent.putExtra("chk",c1);
+                startActivity(intent);
 
-        bplus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (display.getText().length()!=0)
-                {
-                    num1=Float.parseFloat(display.getText().toString());
-                    display.setText("");
-                    add=true;
-                }
+                Toast.makeText(MainActivity.this, "opening browser..", Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent();
+                //myIntent.setAction(Intent.ACTION_VIEW);
 
-            }
-        });
-        bminus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (display.getText().length()!=0){
-                    num1=Float.parseFloat(display.getText().toString());
-                    sub=true;
-                    display.setText("");
-                }
-            }
-        });
-        bmul.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (display.getText()!=null)
-                {
-                    num1=Float.parseFloat(display.getText().toString());
-                    display.setText("");
-                    mul=true;
-                }
-
-            }
-        });
-        bdiv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (display.getText()!=null)
-                {
-                    num1=Float.parseFloat(display.getText().toString());
-                    display.setText("");
-                    div=true;
-                }
-
-            }
-        });
-        bdot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                display.setText(display.getText()+".");
-
-            }
-        });
-        bclear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    display.setText("");
-
-            }
-        });
-        bequal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (add){
-                    num2=Float.parseFloat(display.getText().toString());
-                    num3=(num1+num2);
-                    display.setText(num3+"");
-                    Toast.makeText(getApplicationContext(),"ac",Toast.LENGTH_SHORT).show();
-                    add=false;
-                }
-                if (sub){
-                    num2=Float.parseFloat(display.getText().toString());
-                    display.setText(num1-num2+"");
-                    sub=false;
-                }
-                if (mul){
-                    num2=Float.parseFloat(display.getText().toString());
-                    display.setText(num1*num2+"");
-                    mul=false;
-                }
-                if (div){
-                    num2=Float.parseFloat(display.getText().toString());
-                    display.setText(num1/num2+"");
-                    div=false;
-                }
+                //myIntent.setData(Uri.parse("https://google.com"));
+                startActivity(myIntent);
             }
         });
     }
+
 }
